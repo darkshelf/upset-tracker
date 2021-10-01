@@ -27,7 +27,9 @@ export default {
         }
     }, 
     mounted () {
-      const apiHost = 'https://d8b2602d-6dc9-4e4f-836e-bd5357c91710.mock.pstmn.io/games/schedule/week';
+      // Temp change to save on server requests to pstmn. Use local node server for Dev
+      // const apiHost = 'https://d8b2602d-6dc9-4e4f-836e-bd5357c91710.mock.pstmn.io/games/schedule/week';
+      const apiHost = 'http://localhost:3000/week'
       const requests = [];
 
       for(let x = 1; x <= 4; x++) {   

@@ -3,17 +3,19 @@
         <h1>Game View</h1>
         <div>
             <!-- Sort Buttons -->
-            <button v-on:click="sortValueDesc()">Sort By Odds</button>            
-            <button v-on:click="sortValueAsc()">Sort by Value</button>            
-            <button v-on:click="filters.push(filterAvailable)">Filter Available</button>   
+            <div class="controls">
+                <button v-on:click="sortValueDesc()">Sort By Value</button>            
+                <button v-on:click="sortValueAsc()">Sort by Odds</button>            
+                <button v-on:click="filters.push(filterAvailable)">Filter Available</button>   
 
-            <!-- Region Filtering needs to be better thought out within the displayGames() logic -->
-            <!-- <button v-for="(region, index) in regions" :key="index" v-on:click="displayRegion(region.regionId)">{{region.regionName}}</button> -->
-
+                <!-- Region Filtering needs to be better thought out within the displayGames() logic -->
+                <!-- <button v-for="(region, index) in regions" :key="index" v-on:click="displayRegion(region.regionId)">{{region.regionName}}</button> -->
+            </div>
             <!-- List of each individual matchup -->
             <ul class="matchups">
                 <li v-for="(game, index) in displayGames" :key="index" v-bind:class="{chosen: game.chosen}">
-                    <IndividualMatchup :game="game" :isMyChoice="false" />
+                    <!-- isMyChoice hardcoded for testing until user system is defined -->
+                    <IndividualMatchup :game="game" :isMyChoice="true" />
                 </li>                                
             </ul>  
 
@@ -55,7 +57,7 @@
             // Filters the games by the ones already chosen
             // TODO: Refactor out this.games mutation into a return function
             filterChosen(games) {
-                return this.games.filter( game => game.chosen )
+                return games.filter( game => game.chosen )
             },
             // Filters the games by the ones that available for selection
             filterAvailable(games) {
@@ -128,16 +130,32 @@
     }
 
     li {
-        width: 300px;
-        display: block;
-        background-color: #0BDA51;
+        width: 90%;
+        display: block;        
+        border: #0BDA51 3px solid;
         margin-bottom: 20px;
         padding: 15px;
         border-radius: 5px;
     }
 
-    li.chosen {
-        background-color: grey;
+    /* On screens that are 600px or more display cards in a grid */
+    @media screen and (min-width: 600px) {
+        li {
+            width: 250px;
+        }
     }
+
+    li.chosen {
+        border: black 3px solid;
+        background-color: grey;        
+    }
+
+    li:hover {
+        background-color: #0BDA51;
+    }   
+    
+    li.chosen:hover {
+        background-color: grey;
+    }       
 
 </style>
