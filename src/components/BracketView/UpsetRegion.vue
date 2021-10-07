@@ -58,12 +58,6 @@ main{
 /*
 *  General Styles
 */
-body{
-    font-family:sans-serif;
-    font-size:small;
-    padding:10px;
-    line-height:1.4em;
-}
 
 li.game{
 padding-left:20px;

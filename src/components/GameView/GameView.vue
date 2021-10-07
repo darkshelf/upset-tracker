@@ -121,6 +121,16 @@
 </script>
 
 <style scoped>
+
+    h1 {
+        margin-left: 1rem;
+    }
+
+    .controls {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
     ul.matchups {
         display: flex;
         flex-flow: wrap;
@@ -133,6 +143,7 @@
         width: 90%;
         display: block;        
         border: #0BDA51 3px solid;
+        background-color: rgb(233, 120, 80);
         margin-bottom: 20px;
         padding: 15px;
         border-radius: 5px;
@@ -152,10 +163,11 @@
 
     li:hover {
         background-color: #0BDA51;
+        cursor: pointer;
     }   
     
     li.chosen:hover {
-        background-color: grey;
+        background-color: grey;        
     }       
 
 </style>
